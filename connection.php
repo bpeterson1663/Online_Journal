@@ -1,6 +1,6 @@
 <?php
   //$link = mysqli_connect('localhost', 'root', 'root', 'online_journal');
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("heroku_4e7a27171206c39"));
 
 $server = $url["host"];
 $username = $url["user"];
