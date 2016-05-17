@@ -1,0 +1,11 @@
+body{
+  background-image:url('../images/background.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#topContainer{
+  margin-top:30px;
+  text-align:center;
+
+}
