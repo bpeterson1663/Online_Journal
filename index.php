@@ -1,6 +1,7 @@
 <?php
-include('connection.php');
+
 include('login.php');
+include('connection.php');
  ?>
 <!DOCTYPE html>
 <html>
@@ -27,11 +28,11 @@ include('login.php');
         <form class="navbar-form navbar-right" method="POST">
           <div class="form-group">
             <label for="loginEmail">Email: </label>
-            <input class="form-control" placeholder="Email" type="email" name="loginEmail" id="loginEmail" value="<?php echo addslashes($_POST['email']);?>"/>
+            <input class="form-control" placeholder="Email" type="email" name="loginEmail" id="loginEmail" value="<?php echo addslashes($_POST['loginEmail']);?>"/>
           </div>
           <div class="form-group">
             <label for="loginPassword">Password: </label>
-            <input class="form-control" placeholder="Password" type="password" name="loginPassword" value="<?php echo addslashes($_POST['password']);?>"/>
+            <input class="form-control" placeholder="Password" type="password" name="loginPassword" value="<?php echo addslashes($_POST['loginPassword']);?>"/>
           </div>
 
           <input class="btn btn-success" type="submit" name="submit" value="Log In" />
@@ -54,10 +55,6 @@ include('login.php');
           }
          ?>
         <form method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input class="form-control" placeholder="Name" type="name" name="name" id="name" value="<?php echo addslashes($_POST['name']);?>"/>
-          </div>
           <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" placeholder="Email" type="email" name="email" id="email" value="<?php echo addslashes($_POST['email']);?>"/>

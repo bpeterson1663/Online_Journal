@@ -1,17 +1,17 @@
 <?php
-session_start();
-include('connection.php');
-include('login.php');
+	session_start();
 
-$query="SELECT entry FROM users WHERE id='".$_SESSION['id']."' LIMIT 1";
+	include("connection.php");
 
-$result = mysqli_query($link, $query);
+	$query="SELECT entry FROM users WHERE id='".$_SESSION['id']."' LIMIT 1";
 
-$row = mysqli_fetch_array($result);
+	$result = mysqli_query($link,$query);
+	
+	$row = mysqli_fetch_array($result);
 
-$entry = $row['entry'];
+	$entry=$row['entry'];
 
- ?>
+?>
 <!DOCTYPE html>
 <html>
   <head>
