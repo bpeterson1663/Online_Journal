@@ -3,10 +3,10 @@
 
 	include("connection.php");
 
-	$query="SELECT entry FROM users WHERE id='".$_SESSION['id']."' LIMIT 1";
+	$query="SELECT entry FROM users WHERE id='".$_SESSION['id']."' LIMIT 1;";
 
 	$result = mysqli_query($link,$query);
-	
+
 	$row = mysqli_fetch_array($result);
 
 	$entry=$row['entry'];
@@ -39,7 +39,8 @@
   <div class="container" id="topContainer">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <textarea class="form-control" name="entry">
+				<p class="lead lead-welcome"><b>No need to save. It will do it for you!</b></p>
+        <textarea class="form-control journal-entry" name="entry">
 
             <?php echo $entry; ?>
         </textarea>

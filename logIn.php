@@ -4,6 +4,7 @@
   if($_GET['logout']==1 AND $_SESSION['id']){
     session_destroy();
     $message = "You have been logged out. Have a nice day!";
+    session_start();
   }
   include('connection.php');
 
@@ -38,36 +39,36 @@
       if($results){
         $error = "That Email address is already registered. Do you want to log in";
       }else{
-        $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."')";
+        $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."');";
 
         mysqli_query($link, $query);
 
-        echo "You've been signed up!";
+        header("Location: mainPage.php");
 
         $_SESSION['id']=mysqli_insert_id($link);//starts the session with the last person that was created
 
-        header("Location:mainPage.php");
+
       }
     }
   }
 
   if ($_POST['submit'] == "Log In") {
 
-		$query = "SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['loginEmail'])."'AND password='" .md5(md5($_POST['loginEmail']) .$_POST['loginPassword']). "'LIMIT 1";
+  $query = "SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['loginemail'])."' AND password='".md5(md5($_POST['loginemail']).$_POST['loginpassword'])."';";
 
-		$result = mysqli_query($link, $query);
+  $result = mysqli_query($link, $query);
 
-		$row = mysqli_fetch_array($result);
+  $row = mysqli_fetch_array($result);
 
-		if($row){
+  if($row){
 
-			$_SESSION['id']=$row['id'];
+    $_SESSION['id']=$row['id'];
 
-			header("Location:mainPage.php");
+    header("Location:mainPage.php");
 
-		} else {
+  } else {
+    $error = "We could not find a user with that email and password. Please try again.";
+  }
 
-			$error = "We could not find a user with that email and password. Please try again.";
-		}
-	}
+}
 ?>

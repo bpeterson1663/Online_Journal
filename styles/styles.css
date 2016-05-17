@@ -2,10 +2,19 @@ body{
   background-image:url('../images/background.jpg');
   background-size: cover;
   background-position: center;
+  color: #edf2f6;
 }
 
 #topContainer{
-  margin-top:30px;
+  margin-top: 50px;
   text-align:center;
+}
 
+.journal-entry{
+  margin-top: 20px;
+  width:500px;
+}
+
+.lead-welcome{
+  margin-top: 5px;
 }

@@ -27,15 +27,15 @@ include('connection.php');
       <div class="collapse navbar-collapse">
         <form class="navbar-form navbar-right" method="POST">
           <div class="form-group">
-            <label for="loginEmail">Email: </label>
-            <input class="form-control" placeholder="Email" type="email" name="loginEmail" id="loginEmail" value="<?php echo addslashes($_POST['loginEmail']);?>"/>
+            <label for="loginemail">Email: </label>
+            <input class="form-control" placeholder="Email" type="email" name="loginemail" id="loginemail" />
           </div>
           <div class="form-group">
-            <label for="loginPassword">Password: </label>
-            <input class="form-control" placeholder="Password" type="password" name="loginPassword" value="<?php echo addslashes($_POST['loginPassword']);?>"/>
+            <label for="loginpassword">Password: </label>
+            <input class="form-control" placeholder="Password" type="password" name="loginpassword" />
           </div>
 
-          <input class="btn btn-success" type="submit" name="submit" value="Log In" />
+          <input class="btn btn-info" type="submit" name="submit" value="Log In" />
         </form>
       </div>
     </div>
@@ -64,7 +64,7 @@ include('connection.php');
             <input class="form-control" placeholder="Password" type="password" name="password" value="<?php echo addslashes($_POST['password']);?>"/>
           </div>
 
-          <input class="btn btn-lg btn-success" type="submit" name="submit" value="Sign Up" />
+          <input class="btn btn-lg btn-info" type="submit" name="submit" value="Sign Up" />
         </form>
 
 
