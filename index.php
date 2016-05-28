@@ -10,7 +10,8 @@
     $message = "You have been logged out. Have a nice day!";
     session_start();
   }
-  $server = 'us-cdbr-iron-east-04.cleardb.net';
+
+  $server = 'us-cdbr-iron-east-04.cleardb.net/';
   $username = 'bf5bc9a564006f';
   $password = 'cfd4bb5e';
   $db = 'heroku_4e7a27171206c39';
