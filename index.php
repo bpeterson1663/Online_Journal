@@ -9,8 +9,12 @@
     session_start();
   }
 
-  $conn_string = "host=ec2-54-83-47-88.compute-1.amazonaws.com port=5432 dbname=d9u0r98lepbm2d user=slwolrqqwjlidr password=yQPqAl0gTpOtwMUytkl46jmX64";
-  $link = pg_connect($conn_string);
+  $server = 'us-cdbr-iron-east-04.cleardb.net';
+  $username = 'b8c9d44004cc5d';
+  $password = '42f42c8f';
+  $db = 'heroku_7da4bb181d6ffac';
+
+  $link = mysqli_connect($server, $username, $password, $db);
 
 //checks if submit button was pressed
   if($_POST['submit']=="Sign Up"){
@@ -34,23 +38,23 @@
       $error = "<br/>There were error(s) in your signup details:".$error;
     }else{//check to see if email already exists
 
-      $query="SELECT * FROM users WHERE email='".pg_escape_string($link, $_POST['email'])."'";
+      $query="SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['email'])."'";
 
-      $result = pg_query($link, $query);
+      $result = mysqli_query($link, $query);
 
-      $results = pg_fetch_rows($result);
+      $results = mysqli_num_rows($result);
 
       if($results){
         $error = "That Email address is already registered. Do you want to log in";
       }else{
-        $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".pg_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."');";
+        $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."');";
 
-        pg_query($link, $query);
+        mysqli_query($link, $query);
 
 
         header("Location: mainPage.php");
 
-        $_SESSION['id']=pg_insert_id($link);//starts the session with the last person that was created
+        $_SESSION['id']=mysqli_insert_id($link);//starts the session with the last person that was created
 
 
       }
@@ -59,12 +63,12 @@
 
   if ($_POST['submit'] == "Log In") {
 
-  $query = "SELECT * FROM users WHERE email='".pg_escape_string($link, $_POST['loginemail'])."' AND password='".md5(md5($_POST['loginemail']).$_POST['loginpassword'])."';";
+  $query = "SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['loginemail'])."' AND password='".md5(md5($_POST['loginemail']).$_POST['loginpassword'])."';";
 
-  $result = pg_query($link, $query);
+  $result = mysqli_query($link, $query);
 
 
-  $row = pg_fetch_array($result);
+  $row = mysqli_fetch_array($result);
 
   if($row){
 

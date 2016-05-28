@@ -1,14 +1,18 @@
 <?php
 	session_start();
 
-	$conn_string = "host=ec2-54-83-47-88.compute-1.amazonaws.com port=5432 dbname=d9u0r98lepbm2d user=slwolrqqwjlidr password=yQPqAl0gTpOtwMUytkl46jmX64";
-	$link = pg_connect($conn_string);
+	$server = 'us-cdbr-iron-east-04.cleardb.net';
+  $username = 'b8c9d44004cc5d';
+  $password = '42f42c8f';
+  $db = 'heroku_7da4bb181d6ffac';
+
+  $link = mysqli_connect($server, $username, $password, $db);
 
 	$query="SELECT entry FROM users WHERE id='".$_SESSION['id']."' LIMIT 1;";
 
-	$result = pg_query($link, $query);
+	$result = mysqli_query($link,$query);
 
-	$row = pg_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 
 	$entry=$row['entry'];
 
