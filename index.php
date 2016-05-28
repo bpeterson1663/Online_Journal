@@ -50,7 +50,7 @@
 
         header("Location: mainPage.php");
 
-        $_SESSION['id']=pg_insert($link);//starts the session with the last person that was created
+        $_SESSION['id']=pg_insert_id($link);//starts the session with the last person that was created
 
 
       }
