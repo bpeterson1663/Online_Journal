@@ -42,7 +42,7 @@
 
       $query="SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['email'])."'";
 
-      $result = mysqli_query($link, $query);
+      $result = $link->query($query);
 
       $results = mysqli_num_rows($result);
 
@@ -51,7 +51,8 @@
       }else{
         $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."');";
 
-        mysqli_query($link, $query);
+        //mysqli_query($link, $query);
+        $link->query($query);
 
         header("Location: mainPage.php");
 
@@ -66,7 +67,8 @@
 
   $query = "SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['loginemail'])."' AND password='".md5(md5($_POST['loginemail']).$_POST['loginpassword'])."';";
 
-  $result = mysqli_query($link, $query);
+  $result = $link->query($query);//mysqli_query($link, $query);
+
 
   $row = mysqli_fetch_array($result);
 
