@@ -1,8 +1,6 @@
 
 <?php
 
-
-
   session_start();
 
   if($_GET['logout']==1 AND $_SESSION['id']){
@@ -11,12 +9,14 @@
     session_start();
   }
 
-  $server = 'us-cdbr-iron-east-04';
-  $username = 'bf5bc9a564006f';
-  $password = 'cfd4bb5e';
-  $db = 'heroku_4e7a27171206c39';
+  $url = parse_url(getenv("mysql://bf5bc9a564006f:cfd4bb5e@us-cdbr-iron-east-04.cleardb.net/heroku_4e7a27171206c39?reconnect=true"));
 
-  $link = mysqli_connect($server, $username, $password, $db);
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $db = substr($url["path"], 1);
+
+  $link = new mysqli($server, $username, $password, $db);
 
 //checks if submit button was pressed
   if($_POST['submit']=="Sign Up"){
