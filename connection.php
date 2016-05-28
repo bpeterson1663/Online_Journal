@@ -1,3 +1,12 @@
 <?php
-  $link = mysql_connect('localhost:3306', 'bf5bc9a564006f', 'cfd4bb5e');
+  $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $username = $url["user"];
+  $password = $url["pass"];
+  $db = substr($url["path"],1);
+
+  $link = mysql_connect($server, $username, $password);
+
+  mysql_select_db($db);
  ?>
