@@ -57,6 +57,7 @@
   $("textarea").css("height",$(window).height()-120);
   $("textarea").keyup(function(){
     $.post("update.php", {entry:$("textarea").val()} );
+		console.log("here");
   });
   </script>
 </body>
